@@ -1,4 +1,4 @@
-package com.fighter.stylestorm.data
+package com.fighter.stylestorm.data.models
 
 
 import com.google.gson.annotations.SerializedName
