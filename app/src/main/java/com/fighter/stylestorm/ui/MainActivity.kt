@@ -1,7 +1,8 @@
-package com.fighter.stylestorm
+package com.fighter.stylestorm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.fighter.stylestorm.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
