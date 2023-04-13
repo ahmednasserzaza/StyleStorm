@@ -2,7 +2,12 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+File secretsFile = rootProject.file("secret.properties")
+Properties secretsProperties = new Properties()
 
+if (secretsFile.exists()) {
+    secretsProperties.load(new FileInputStream(secretsFile))
+}
 android {
     namespace 'com.fighter.stylestorm'
     compileSdk 33
@@ -13,6 +18,7 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "API_KEY", secretsProperties.getProperty("API_KEY", System.getenv("API_KEY")))
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,7 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -48,7 +54,7 @@ dependencies {
     def okHttp_version = "4.10.0"
     // OkHttp dependency
     implementation "com.squareup.okhttp3:okhttp:$okHttp_version"
-    implementation"com.squareup.okhttp3:logging-interceptor:$okHttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
     // Gson dependency
     implementation 'com.google.code.gson:gson:2.10.1'
 }
