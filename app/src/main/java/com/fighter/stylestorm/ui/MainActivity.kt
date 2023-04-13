@@ -2,11 +2,27 @@ package com.fighter.stylestorm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.fighter.stylestorm.R
+import com.fighter.stylestorm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val navController = findNavController(R.id.fragment_host)
+        binding.bottomNavigation.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        findNavController(R.id.fragment_host).navigateUp()
+        return true
     }
 }
