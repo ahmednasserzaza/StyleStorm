@@ -29,8 +29,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
         Network.makeRequestUsingOkhttp(this, lat = 0.044420, long = 31.235712)
 
     override fun onSuccess(weatherResponse: WeatherResponse) {
-        log("Success : ${weatherResponse.location?.country}")
-        log("Icon : ${weatherResponse.current?.condition?.icon}")
         initWeather(weatherResponse)
         setRandomImageBasedOnClimate(getRandomImageBasedOnClimate(weatherResponse))
     }

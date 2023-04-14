@@ -34,6 +34,7 @@ class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterfa
             sharedPref.setImageList(imageList.toMutableList().apply { add(wearedItem) })
         } ?: sharedPref.setImageList(listOf(wearedItem))
     }
+
     override fun getRandomWinterItem(): Int {
         var randomWinterClothes = winterClothes.random()
         while (randomWinterClothes in (sharedPref.getImageList() ?: emptyList())) {
@@ -42,11 +43,11 @@ class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterfa
         return randomWinterClothes
     }
 
-    override fun getClothesStoredInSharedPref(): List<Int>? {
-        return if (sharedPref.getImageList() != null){
-            sharedPref.getImageList()
-        }else{
-            emptyList()
-        }
+    override fun getClothesStoredInSharedPref(): List<Int> {
+        return sharedPref.getImageList()?.takeIf { it.isNotEmpty() } ?: emptyList()
+    }
+
+    override fun clearAllClothesFromPreferences() {
+        sharedPref.clearImageList()
     }
 }

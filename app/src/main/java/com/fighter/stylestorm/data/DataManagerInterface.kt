@@ -5,4 +5,5 @@ interface DataManagerInterface {
     fun getRandomWinterItem():Int
     fun getClothesStoredInSharedPref():List<Int>?
     fun addWearedClothesToPreferences(wearedItem:Int)
+    fun clearAllClothesFromPreferences()
 }
