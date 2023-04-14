@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,35 +17,39 @@
         android:layout_margin="@dimen/margin_medium"
         android:textColor="@color/md_theme_light_surfaceTint"
         />
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_weather_degree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="24 C"
         android:textSize="@dimen/text_giant"
         android:textStyle="bold"
+        android:textColor="@color/black_87"
         app:layout_constraintTop_toBottomOf="@+id/text_welcome"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_medium"
         />
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_city_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Cairo , "
         android:textSize="@dimen/text_large"
+        android:textColor="@color/black_60"
         android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintTop_toBottomOf="@+id/text_weather_degree"
         app:layout_constraintStart_toStartOf="parent"
         />
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_country_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Egypt"
         android:textSize="@dimen/text_large"
+        android:textColor="@color/black_60"
+
         app:layout_constraintTop_toBottomOf="@+id/text_weather_degree"
         app:layout_constraintStart_toEndOf="@+id/text_city_name"
         app:layout_constraintTop_toTopOf="@+id/text_city_name"
@@ -55,16 +59,18 @@
         android:id="@+id/image_weather_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_weather_state"
+        tools:srcCompat="@drawable/ic_weather_state"
         android:layout_marginEnd="@dimen/margin_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_weather_degree"
         />
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_weather_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Raining"
+        android:textColor="@color/black_60"
+        android:textSize="@dimen/text_medium"
         android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintTop_toBottomOf="@+id/image_weather_state"
         app:layout_constraintEnd_toEndOf="@+id/image_weather_state"
@@ -86,7 +92,7 @@
         android:id="@+id/image_suggested_item"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:srcCompat="@drawable/ic_launcher_background"
+        tools:srcCompat="@drawable/ic_launcher_background"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/text_suggestion_title"
         app:layout_constraintEnd_toEndOf="parent"
