@@ -15,10 +15,10 @@ class SharedPreferences(context: Context) {
         return imageSet?.map { it.toInt() } // use safe-call operator to handle null list
     }
 
-    fun setImageList(imageList: List<Int>?) { // use nullable type for parameter
+    fun setImageList(imageList: List<Int?>) { // use nullable type for parameter
         val editor = sharedPreferences.edit()
         val imageSet =
-            imageList?.map { it.toString() }?.toSet() // use safe-call operator to handle null list
+            imageList.map { it.toString() }.toSet() // use safe-call operator to handle null list
         editor.putStringSet(IMAGE_LIST, imageSet)
         editor.apply()
     }

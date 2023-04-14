@@ -1,7 +1,6 @@
 package com.fighter.stylestorm.data
 
 import com.fighter.stylestorm.R
-import com.fighter.stylestorm.data.models.WeatherResponse
 import com.fighter.stylestorm.utils.SharedPreferences
 
 class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterface {
@@ -30,7 +29,7 @@ class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterfa
         }
         return randomSummerClothes
     }
-    fun addWearedClothesToPreferences(wearedItem: Int) {
+    override fun addWearedClothesToPreferences(wearedItem: Int) {
         sharedPref.getImageList()?.let { imageList ->
             sharedPref.setImageList(imageList.toMutableList().apply { add(wearedItem) })
         } ?: sharedPref.setImageList(listOf(wearedItem))
