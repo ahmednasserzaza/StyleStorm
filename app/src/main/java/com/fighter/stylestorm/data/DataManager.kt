@@ -1,8 +1,10 @@
 package com.fighter.stylestorm.data
 
 import com.fighter.stylestorm.R
+import com.fighter.stylestorm.data.models.WeatherResponse
+import com.fighter.stylestorm.utils.SharedPreferences
 
-class DataManager {
+class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterface {
     private val summerClothes = listOf(
         R.drawable.summer,
         R.drawable.summer1,
@@ -20,4 +22,32 @@ class DataManager {
         R.drawable.winter5,
         R.drawable.winter6
     )
+
+    override fun getRandomSummerItem(): Int {
+        var randomSummerClothes = summerClothes.random()
+        while (randomSummerClothes in (sharedPref.getImageList() ?: emptyList())) {
+            randomSummerClothes = summerClothes.random()
+        }
+        return randomSummerClothes
+    }
+    fun addWearedClothesToPreferences(wearedItem: Int) {
+        sharedPref.getImageList()?.let { imageList ->
+            sharedPref.setImageList(imageList.toMutableList().apply { add(wearedItem) })
+        } ?: sharedPref.setImageList(listOf(wearedItem))
+    }
+    override fun getRandomWinterItem(): Int {
+        var randomWinterClothes = winterClothes.random()
+        while (randomWinterClothes in (sharedPref.getImageList() ?: emptyList())) {
+            randomWinterClothes = winterClothes.random()
+        }
+        return randomWinterClothes
+    }
+
+    override fun getClothesStoredInSharedPref(): List<Int>? {
+        return if (sharedPref.getImageList() != null){
+            sharedPref.getImageList()
+        }else{
+            emptyList()
+        }
+    }
 }

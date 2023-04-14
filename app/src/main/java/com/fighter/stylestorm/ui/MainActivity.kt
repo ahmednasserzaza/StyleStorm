@@ -1,15 +1,10 @@
 package com.fighter.stylestorm.ui
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.fighter.stylestorm.R
-import com.fighter.stylestorm.data.Network
-import com.fighter.stylestorm.data.WeatherCallback
-import com.fighter.stylestorm.data.models.WeatherResponse
 import com.fighter.stylestorm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
