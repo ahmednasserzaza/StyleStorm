@@ -1,6 +1,9 @@
 package com.fighter.stylestorm.ui.home
 
+import android.util.Log
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.DataManager
 import com.fighter.stylestorm.data.DataManagerInterface
 import com.fighter.stylestorm.data.Network
@@ -22,9 +25,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , WeatherCallback {
     override fun setUp() {
         fetchWeatherData()
     }
-    private fun fetchWeatherData() = Network.makeRequestUsingOkhttp(this , lat = 57.358 , long = 8785.57)
+    private fun fetchWeatherData() = Network.makeRequestUsingOkhttp(this , lat =30.044420, long = 31.235712)
     override fun onSuccess(weatherResponse: WeatherResponse) {
-       initWeather(weatherResponse)
+        log("Success : ${weatherResponse.location?.country}")
+        log("Icon : ${weatherResponse.current?.condition?.icon}")
+        initWeather(weatherResponse)
     }
 
     override fun onError(message: String) {
@@ -35,10 +40,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , WeatherCallback {
         activity?.runOnUiThread {
             Toast.makeText(requireContext() , "Success : ${weatherResponse.location?.country}" , Toast.LENGTH_LONG).show()
             binding.apply {
-                textWeatherDegree.text = weatherResponse.current?.tempC.toString()
+                textWeatherDegree.text = "${weatherResponse.current?.tempC}°C"
                 textCityName.text = weatherResponse.location?.region
                 textCountryName.text = weatherResponse.location?.country
                 textWeatherState.text = weatherResponse.current?.condition?.text
+                Glide.with(imageWeatherState)
+                    .load("https:${weatherResponse.current?.condition?.icon}")
+                    .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_error)
+                    .into(imageWeatherState)
             }
         }
     }
