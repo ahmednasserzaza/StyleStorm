@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginVertical="@dimen/margin_small"
     android:layout_marginHorizontal="@dimen/margin_medium"
     app:strokeWidth="0dp">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_laundry_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/ic_launcher_background"
+        tools:srcCompat="@drawable/ic_launcher_background"
         android:scaleType="centerCrop"
         />
 
