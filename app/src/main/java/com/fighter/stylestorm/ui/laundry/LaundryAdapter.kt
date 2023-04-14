@@ -1,4 +1,6 @@
 package com.fighter.stylestorm.ui.laundry
 
-class LaundryAdapter {
+class LaundryAdapter(private val dirtyClothes:List<Int>) {
+
+    inner class LaundryViewHolder()
 }
