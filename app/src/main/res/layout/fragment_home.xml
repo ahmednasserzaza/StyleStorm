@@ -94,6 +94,7 @@
         android:layout_height="300dp"
         tools:srcCompat="@drawable/ic_launcher_background"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ImageShape"
         app:layout_constraintTop_toBottomOf="@+id/text_suggestion_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

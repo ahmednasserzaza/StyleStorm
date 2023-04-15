@@ -28,4 +28,10 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
+
+    <style name="ImageShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
 </resources>
