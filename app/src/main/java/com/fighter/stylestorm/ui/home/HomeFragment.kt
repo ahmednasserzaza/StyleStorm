@@ -1,5 +1,6 @@
 package com.fighter.stylestorm.ui.home
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.fighter.stylestorm.R
@@ -42,8 +43,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
             Glide.with(binding.root)
                 .load(randomItem)
                 .into(binding.imageSuggestedItem)
+            dataManager.addWearedClothesToPreferences(randomItem!!)
         }
-        dataManager.addWearedClothesToPreferences(randomItem!!)
     }
 
     private fun getRandomImageBasedOnClimate(weatherResponse: WeatherResponse): Int? {
@@ -57,6 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initWeather(weatherResponse: WeatherResponse) {
         activity?.runOnUiThread {
             Toast.makeText(
