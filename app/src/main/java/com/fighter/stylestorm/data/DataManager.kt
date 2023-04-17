@@ -1,62 +1,105 @@
 package com.fighter.stylestorm.data
 
-import android.util.Log
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.utils.SharedPreferences
 
-class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterface {
-    private val summerClothes = listOf(
-        R.drawable.summer,
-        R.drawable.summer1,
-        R.drawable.summer2,
-        R.drawable.summer3,
-        R.drawable.summer4,
-        R.drawable.summer5,
-        R.drawable.summer6
-    )
+class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterface {
+
     private val winterClothes = listOf(
-        R.drawable.winter1,
-        R.drawable.winter2,
-        R.drawable.winter3,
-        R.drawable.winter4,
-        R.drawable.winter5,
-        R.drawable.winter6
+        R.drawable.collection10,
+        R.drawable.collection11,
+        R.drawable.collection12,
+        R.drawable.collection13,
+        R.drawable.collection14,
+        R.drawable.collection15,
+    )
+    private val autumnClothes = listOf(
+        R.drawable.collection00,
+        R.drawable.collection01,
+        R.drawable.collection02,
+        R.drawable.collection03,
+        R.drawable.collection04,
+        R.drawable.collection05,
+    )
+    private val springClothes = listOf(
+        R.drawable.collection20,
+        R.drawable.collection21,
+        R.drawable.collection22,
+        R.drawable.collection23,
+        R.drawable.collection24,
+        R.drawable.collection25,
+    )
+    private val summerClothes = listOf(
+        R.drawable.collection30,
+        R.drawable.collection31,
+        R.drawable.collection32,
+        R.drawable.collection33,
+        R.drawable.collection34,
+        R.drawable.collection35,
+        R.drawable.collection36,
     )
 
-//    override fun getRandomSummerItem(): Int {
-//        var randomSummerClothes = summerClothes.random()
-//        while (randomSummerClothes in (sharedPref.getImageList() ?: emptyList())) {
-//            randomSummerClothes = summerClothes.random()
-//        }
-//        Log.e("Summer","summer Random : $randomSummerClothes")
-//        return randomSummerClothes
-//    }
-
-    override fun getRandomSummerItem(): Int? {
-        val allSummerClothes = summerClothes.toList()
+    override fun getRandomWinterClothes(): Int? {
+        val winterClothes = winterClothes.toList()
         val imageList = sharedPref.getImageList() ?: emptyList()
-        if (imageList.containsAll(allSummerClothes)) {
-            // all possible items are already in the list, nothing to return
+        if (imageList.containsAll(winterClothes)) {
             return null
         }
 
-        var randomSummerClothes: Int
+        var randomWinterItem: Int
         do {
-            randomSummerClothes = summerClothes.random()
-        } while (randomSummerClothes in imageList)
+            randomWinterItem = winterClothes.random()
+        } while (randomWinterItem in imageList)
 
-        Log.e("Summer","summer Random : $randomSummerClothes")
-        return randomSummerClothes
+        return randomWinterItem
     }
 
-
-    override fun getRandomWinterItem(): Int {
-        var randomWinterClothes = winterClothes.random()
-        while (randomWinterClothes in (sharedPref.getImageList() ?: emptyList())) {
-            randomWinterClothes = winterClothes.random()
+    override fun getRandomAutumnClothes(): Int? {
+        val autumnClothes = autumnClothes.toList()
+        val imageList = sharedPref.getImageList() ?: emptyList()
+        if (imageList.containsAll(autumnClothes)) {
+            return null
         }
-        return randomWinterClothes
+
+        var randomAutumnItem: Int
+        do {
+            randomAutumnItem = autumnClothes.random()
+        } while (randomAutumnItem in imageList)
+
+        return randomAutumnItem
     }
+
+    override fun getRandomSummerClothes(): Int? {
+        val summerClothes = summerClothes.toList()
+        val imageList = sharedPref.getImageList() ?: emptyList()
+        if (imageList.containsAll(summerClothes)) {
+            return null
+        }
+
+        var randomSummerItem: Int
+        do {
+            randomSummerItem = summerClothes.random()
+        } while (randomSummerItem in imageList)
+
+        return randomSummerItem
+    }
+
+    override fun getRandomSpringClothes(): Int? {
+        val springClothes = springClothes.toList()
+        val imageList = sharedPref.getImageList() ?: emptyList()
+        if (imageList.containsAll(springClothes)) {
+            return null
+        }
+
+        var randomSpringItem: Int
+        do {
+            randomSpringItem = springClothes.random()
+        } while (randomSpringItem in imageList)
+
+        return randomSpringItem
+    }
+
+
     override fun addWearedClothesToPreferences(wearedItem: Int) {
         sharedPref.getImageList()?.let { imageList ->
             sharedPref.setImageList(imageList.toMutableList().apply { add(wearedItem) })

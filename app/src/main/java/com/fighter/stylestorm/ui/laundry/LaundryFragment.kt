@@ -1,5 +1,7 @@
 package com.fighter.stylestorm.ui.laundry
 
+import android.os.Handler
+import android.view.View
 import com.fighter.stylestorm.data.DataManager
 import com.fighter.stylestorm.data.DataManagerInterface
 import com.fighter.stylestorm.databinding.FragmentLaundryBinding
@@ -24,13 +26,36 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
 
     private fun addCallBacks() {
         binding.fabCleanItems.setOnClickListener {
+
+            Handler().postDelayed({
+                // show lottie
+                showClothesCleaned()
+            }, 5000)
             washClothes()
         }
     }
 
+    private fun showClothesCleaned() {
+        binding.textAllCleaned.visibility = View.VISIBLE
+        binding.imageAllCleaned.visibility = View.VISIBLE
+        binding.placeholderWashing.visibility = View.INVISIBLE
+        binding.textWashing.visibility = View.INVISIBLE
+        binding.fabCleanItems.visibility = View.INVISIBLE
+    }
+
+    private fun showWashingClothes() {
+        binding.placeholderWashing.visibility = View.VISIBLE
+        binding.textWashing.visibility = View.VISIBLE
+        binding.fabCleanItems.visibility = View.INVISIBLE
+        binding.textAllCleaned.visibility = View.INVISIBLE
+        binding.imageAllCleaned.visibility = View.INVISIBLE
+    }
+
+
     private fun washClothes() {
         dataManager.clearAllClothesFromPreferences()
         adapter.setData(dataManager.getClothesStoredInSharedPref()!!)
+        showWashingClothes()
     }
 
     private fun setupAdapter() {
