@@ -50,4 +50,17 @@ class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterfa
     override fun clearAllClothesFromPreferences() {
         sharedPref.clearImageList()
     }
+
+    override fun saveLocation(lat: Double, long: Double) {
+        sharedPref.latitude = lat.toFloat()
+        sharedPref.longitude = lat.toFloat()
+    }
+
+    override fun getLatitude(): Double {
+        return sharedPref.latitude.toDouble()
+    }
+
+    override fun getLongitude(): Double {
+        return sharedPref.longitude.toDouble()
+    }
 }

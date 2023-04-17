@@ -29,8 +29,17 @@ class SharedPreferences(context: Context) {
         editor.apply()
     }
 
-    companion object{
+    var latitude: Float
+        get() = sharedPreferences.getFloat("latitude", 0f)
+        set(value) = sharedPreferences.edit().putFloat("latitude", value).apply()
+
+    var longitude: Float
+        get() = sharedPreferences.getFloat("longitude", 0f)
+        set(value) = sharedPreferences.edit().putFloat("longitude", value).apply()
+
+    companion object {
         private const val SHARED_PREFERENCES_NAME = "ImageSharedPreferences"
         private const val IMAGE_LIST = "ImageList"
     }
+
 }
