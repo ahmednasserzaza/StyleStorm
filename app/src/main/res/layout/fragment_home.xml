@@ -7,15 +7,58 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_welcome"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/placeholder_network_error"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_rawRes="@raw/network"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/text_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium"
-        android:text="@string/welcome_message"
-        android:textSize="@dimen/text_giant"
+        android:text="@string/network_error"
+        android:layout_marginTop="@dimen/margin_small"
+        android:textSize="@dimen/text_medium"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder_network_error"
+        app:layout_constraintEnd_toEndOf="@+id/placeholder_network_error"
+        app:layout_constraintStart_toStartOf="@+id/placeholder_network_error"
+        android:visibility="invisible"
+        android:textColor="@color/md_theme_light_error"
+        />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/placeholder_empty"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_rawRes="@raw/empty"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:layout_constraintTop_toBottomOf="@+id/text_suggestion_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_empty"
+        android:layout_marginTop="@dimen/margin_small"
+        android:textSize="@dimen/text_medium"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder_empty"
+        app:layout_constraintEnd_toEndOf="@+id/placeholder_empty"
+        app:layout_constraintStart_toStartOf="@+id/placeholder_empty"
+        android:visibility="invisible"
+        android:textColor="@color/black_60"
+        />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/weather_container"
@@ -26,7 +69,7 @@
         app:cardElevation="@dimen/elevation_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_welcome"
+        app:layout_constraintTop_toTopOf="parent"
         app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

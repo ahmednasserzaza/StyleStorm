@@ -8,4 +8,8 @@
     <string name="welcome_message">Style Storm</string>
     <string name="text_suggestion">We suggest to wear this item based on current weather climate</string>
     <string name="emptySpace">%d\" \"</string>
+    <string name="messageError">Something went wrong,try again please</string>
+    <string name="network_error">Network Error , Check your network</string>
+    <string name="style_storm">Style Storm</string>
+    <string name="text_empty">No clothes Found , Go to Laundry to clean your clothes</string>
 </resources>

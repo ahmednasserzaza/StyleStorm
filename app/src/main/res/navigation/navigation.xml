@@ -8,15 +8,15 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.fighter.stylestorm.ui.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/style_storm"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/laundryFragment"
         android:name="com.fighter.stylestorm.ui.laundry.LaundryFragment"
-        android:label="LaundryFragment" />
+        android:label="@string/laundry" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.fighter.stylestorm.ui.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

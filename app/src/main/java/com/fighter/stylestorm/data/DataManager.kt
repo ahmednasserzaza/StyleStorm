@@ -1,5 +1,6 @@
 package com.fighter.stylestorm.data
 
+import android.util.Log
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.utils.SharedPreferences
 
@@ -22,13 +23,32 @@ class DataManager(private val sharedPref:SharedPreferences) : DataManagerInterfa
         R.drawable.winter6
     )
 
-    override fun getRandomSummerItem(): Int {
-        var randomSummerClothes = summerClothes.random()
-        while (randomSummerClothes in (sharedPref.getImageList() ?: emptyList())) {
-            randomSummerClothes = summerClothes.random()
+//    override fun getRandomSummerItem(): Int {
+//        var randomSummerClothes = summerClothes.random()
+//        while (randomSummerClothes in (sharedPref.getImageList() ?: emptyList())) {
+//            randomSummerClothes = summerClothes.random()
+//        }
+//        Log.e("Summer","summer Random : $randomSummerClothes")
+//        return randomSummerClothes
+//    }
+
+    override fun getRandomSummerItem(): Int? {
+        val allSummerClothes = summerClothes.toList()
+        val imageList = sharedPref.getImageList() ?: emptyList()
+        if (imageList.containsAll(allSummerClothes)) {
+            // all possible items are already in the list, nothing to return
+            return null
         }
+
+        var randomSummerClothes: Int
+        do {
+            randomSummerClothes = summerClothes.random()
+        } while (randomSummerClothes in imageList)
+
+        Log.e("Summer","summer Random : $randomSummerClothes")
         return randomSummerClothes
     }
+
 
     override fun getRandomWinterItem(): Int {
         var randomWinterClothes = winterClothes.random()

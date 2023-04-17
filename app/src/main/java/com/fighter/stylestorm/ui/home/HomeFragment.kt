@@ -4,7 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
-import android.widget.Toast
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.fighter.stylestorm.R
@@ -95,20 +95,52 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
         Network.makeRequestUsingOkhttp(this, dataManager.getLatitude(), dataManager.getLongitude())
 
     override fun onSuccess(weatherResponse: WeatherResponse) {
+        hideNetworkPlaceHolder()
         initWeather(weatherResponse)
         setRandomImageBasedOnClimate(getRandomImageBasedOnClimate(weatherResponse))
     }
 
     override fun onError(message: String) {
         log("Error:  $message")
+        showNetworkPlaceHolder()
+    }
+
+    private fun showNetworkPlaceHolder() {
+        activity?.runOnUiThread {
+            binding.placeholderNetworkError.visibility = View.VISIBLE
+            binding.textError.visibility = View.VISIBLE
+            binding.weatherContainer.visibility = View.INVISIBLE
+            binding.textSuggestionTitle.visibility = View.INVISIBLE
+            binding.imageSuggestedItem.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun hideNetworkPlaceHolder() {
+        activity?.runOnUiThread {
+            binding.placeholderNetworkError.visibility = View.INVISIBLE
+            binding.textError.visibility = View.INVISIBLE
+            binding.weatherContainer.visibility = View.VISIBLE
+            binding.textSuggestionTitle.visibility = View.VISIBLE
+            binding.imageSuggestedItem.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showEmptyPlaceHolder() {
+        binding.placeholderEmpty.visibility = View.VISIBLE
+        binding.textEmpty.visibility = View.VISIBLE
+        binding.textSuggestionTitle.visibility = View.INVISIBLE
     }
 
     private fun setRandomImageBasedOnClimate(randomItem: Int?) {
         activity?.runOnUiThread {
-            Glide.with(binding.root)
-                .load(randomItem)
-                .into(binding.imageSuggestedItem)
-            dataManager.addWearedClothesToPreferences(randomItem!!)
+            if (randomItem != null){
+                Glide.with(binding.root)
+                    .load(randomItem)
+                    .into(binding.imageSuggestedItem)
+                dataManager.addWearedClothesToPreferences(randomItem!!)
+            }else{
+                showEmptyPlaceHolder()
+            }
         }
     }
 
@@ -123,7 +155,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun initWeather(weatherResponse: WeatherResponse) {
         activity?.runOnUiThread {
             binding.apply {
