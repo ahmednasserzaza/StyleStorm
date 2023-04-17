@@ -1,104 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_message"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="@dimen/margin_medium"
-        android:textColor="@color/md_theme_light_surfaceTint"
-        />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_weather_degree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="24 C"
+        android:text="@string/welcome_message"
         android:textSize="@dimen/text_giant"
-        android:textStyle="bold"
-        android:textColor="@color/black_87"
-        app:layout_constraintTop_toBottomOf="@+id/text_welcome"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_medium"
-        />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_city_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Cairo , "
-        android:textSize="@dimen/text_large"
-        android:textColor="@color/black_60"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintTop_toBottomOf="@+id/text_weather_degree"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_country_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Egypt"
-        android:textSize="@dimen/text_large"
-        android:textColor="@color/black_60"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        app:layout_constraintTop_toBottomOf="@+id/text_weather_degree"
-        app:layout_constraintStart_toEndOf="@+id/text_city_name"
-        app:layout_constraintTop_toTopOf="@+id/text_city_name"
-        app:layout_constraintBottom_toBottomOf="@+id/text_city_name"
-        />
-    <ImageView
-        android:id="@+id/image_weather_state"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        tools:srcCompat="@drawable/ic_weather_state"
-        android:layout_marginEnd="@dimen/margin_medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_weather_degree"
-        />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_weather_state"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/weather_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Raining"
-        android:textColor="@color/black_60"
-        android:textSize="@dimen/text_medium"
-        android:layout_marginTop="@dimen/margin_small"
-        app:layout_constraintTop_toBottomOf="@+id/image_weather_state"
-        app:layout_constraintEnd_toEndOf="@+id/image_weather_state"
-        />
+        android:layout_margin="@dimen/margin_medium"
+        android:backgroundTint="@color/white"
+        app:cardElevation="@dimen/elevation_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_welcome"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/padding_medium"
+            android:paddingVertical="@dimen/padding_large">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_weather_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_87"
+                android:textSize="32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="24 C" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:textColor="@color/black_60"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_weather_degree"
+                tools:text="Cairo , " />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_country_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_60"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintBottom_toBottomOf="@+id/text_city_name"
+
+                app:layout_constraintStart_toEndOf="@+id/text_city_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_weather_degree"
+                app:layout_constraintTop_toTopOf="@+id/text_city_name"
+                tools:text="Egypt" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_weather_state"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/text_weather_degree"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_weather_degree"
+                tools:srcCompat="@drawable/ic_weather_state" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/text_weather_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black_60"
+                android:textSize="@dimen/text_medium"
+                app:layout_constraintBaseline_toBaselineOf="@+id/text_country_name"
+                app:layout_constraintEnd_toEndOf="@+id/image_weather_state"
+                app:layout_constraintStart_toStartOf="@+id/image_weather_state"
+                app:layout_constraintTop_toBottomOf="@+id/image_weather_state"
+                tools:text="Raining" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/text_suggestion_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_giant"
+        android:paddingHorizontal="@dimen/padding_medium"
         android:text="@string/text_suggestion"
-        android:textSize="@dimen/text_medium"
         android:textColor="@color/black_60"
-        app:layout_constraintTop_toBottomOf="@+id/text_country_name"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/text_giant"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_suggested_item"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        tools:srcCompat="@drawable/ic_launcher_background"
-        android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/ImageShape"
-        app:layout_constraintTop_toBottomOf="@+id/text_suggestion_title"
+        android:textSize="@dimen/text_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/weather_container" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_suggested_item"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_suggestion_title"
+        app:shapeAppearanceOverlay="@style/ImageShape"
+        tools:srcCompat="@drawable/ic_launcher_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

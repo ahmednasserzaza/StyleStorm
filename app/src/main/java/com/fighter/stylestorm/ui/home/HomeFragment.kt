@@ -17,6 +17,7 @@ import com.fighter.stylestorm.databinding.FragmentHomeBinding
 import com.fighter.stylestorm.ui.base.BaseFragment
 import com.fighter.stylestorm.utils.SharedPreferences
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
     private val sharedPreferences by lazy { SharedPreferences(requireContext()) }
@@ -29,6 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
 
     override fun setUp() {
         requestPermissionFromUser()
+        log("${sharedPreferences.longitude} , ${sharedPreferences.longitude}")
         fetchWeatherData()
     }
 
@@ -79,12 +81,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
                 if (location != null) {
                     val latitude = location.latitude
                     val longitude = location.longitude
-                    dataManager.saveLocation(latitude , longitude)
                     Network.makeRequestUsingOkhttp(this, longitude, latitude)
+                    dataManager.saveLocation(latitude, longitude)
                 }
             }
             .addOnFailureListener { e ->
-                // Handle the error
+                Snackbar.make(binding.root, e.message.toString(), Snackbar.LENGTH_SHORT).show()
             }
     }
 
@@ -124,11 +126,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
     @SuppressLint("SetTextI18n")
     private fun initWeather(weatherResponse: WeatherResponse) {
         activity?.runOnUiThread {
-            Toast.makeText(
-                requireContext(),
-                "Success : ${weatherResponse.location?.country}",
-                Toast.LENGTH_LONG
-            ).show()
             binding.apply {
                 textWeatherDegree.text = "${weatherResponse.current?.tempC}°C"
                 textCityName.text = "${weatherResponse.location?.region} , "
@@ -143,7 +140,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), WeatherCallback {
         }
     }
 
-    companion object{
+    companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
     }
 
