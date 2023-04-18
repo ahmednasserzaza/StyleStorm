@@ -112,12 +112,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun getRandomImageBasedOnClimate(weatherResponse: WeatherResponse): Int? {
-        val climateDegree = weatherResponse.current?.tempC
+        val climateDegree = weatherResponse.current?.tempC?.toInt()
         return climateDegree?.let {
             when {
                 it < 10 -> dataManager.getRandomWinterClothes()
-                it in 10.0..20.0 -> dataManager.getRandomAutumnClothes()
-                it > 20 && it <= 35 -> dataManager.getRandomSpringClothes()
+                it in 10..20 -> dataManager.getRandomAutumnClothes()
+                it in 21..30 -> dataManager.getRandomSpringClothes()
                 else -> dataManager.getRandomSummerClothes()
             }
         }
@@ -139,5 +139,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
     }
-
 }
