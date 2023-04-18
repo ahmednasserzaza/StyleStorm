@@ -49,6 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 placeholderNetworkError.visibility = View.VISIBLE
                 textError.visibility = View.VISIBLE
                 weatherContainer.visibility = View.INVISIBLE
+                statusContainer.visibility =View.INVISIBLE
                 textSuggestionTitle.visibility = View.INVISIBLE
                 imageSuggestedItem.visibility = View.INVISIBLE
             }
@@ -62,6 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 placeholderNetworkError.visibility = View.INVISIBLE
                 textError.visibility = View.INVISIBLE
                 weatherContainer.visibility = View.VISIBLE
+                statusContainer.visibility =View.VISIBLE
                 textSuggestionTitle.visibility = View.VISIBLE
                 imageSuggestedItem.visibility = View.VISIBLE
             }
@@ -82,6 +84,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.apply {
             lottieLoading.visibility = View.VISIBLE
             weatherContainer.visibility = View.GONE
+            statusContainer.visibility =View.GONE
             imageSuggestedItem.visibility = View.GONE
             textSuggestionTitle.visibility = View.GONE
         }
@@ -92,6 +95,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             binding.apply {
                 lottieLoading.visibility = View.GONE
                 weatherContainer.visibility = View.VISIBLE
+                statusContainer.visibility =View.VISIBLE
                 imageSuggestedItem.visibility = View.VISIBLE
                 textSuggestionTitle.visibility = View.VISIBLE
             }
