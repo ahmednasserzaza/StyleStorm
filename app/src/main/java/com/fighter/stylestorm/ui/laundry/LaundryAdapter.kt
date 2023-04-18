@@ -3,7 +3,6 @@ package com.fighter.stylestorm.ui.laundry
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.DiffUtil.DiffResult
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
@@ -20,7 +19,6 @@ class LaundryAdapter(private var dirtyClothes:List<Int>):RecyclerView.Adapter<La
         val binding = ItemLaundryBinding.inflate(inflater , parent , false)
         return LaundryViewHolder(binding)
     }
-
     override fun getItemCount(): Int = dirtyClothes.size
 
     override fun onBindViewHolder(holder: LaundryViewHolder, position: Int) {

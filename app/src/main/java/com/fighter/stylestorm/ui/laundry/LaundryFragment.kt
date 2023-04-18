@@ -27,28 +27,33 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
     private fun addCallBacks() {
         binding.fabCleanItems.setOnClickListener {
             Handler().postDelayed({
-                // show lottie
                 showClothesCleaned()
-            }, 3000)
+            }, 4000)
             washClothes()
         }
     }
 
     private fun showClothesCleaned() {
-        binding.textAllCleaned.visibility = View.VISIBLE
-        binding.imageAllCleaned.visibility = View.VISIBLE
-        binding.placeholderWashing.visibility = View.GONE
-        binding.textWashing.visibility = View.GONE
-        binding.fabCleanItems.visibility = View.GONE
+        binding.apply {
+            textAllCleaned.visibility = View.VISIBLE
+            imageAllCleaned.visibility = View.VISIBLE
+            placeholderWashing.visibility = View.GONE
+            textWashing.visibility = View.GONE
+            fabCleanItems.visibility = View.GONE
+        }
+
     }
 
     private fun showWashingClothes() {
-        binding.placeholderWashing.visibility = View.VISIBLE
-        binding.textWashing.visibility = View.VISIBLE
-        binding.imageWashPlaceHolder.visibility = View.GONE
-        binding.fabCleanItems.visibility = View.GONE
-        binding.textAllCleaned.visibility = View.GONE
-        binding.imageAllCleaned.visibility = View.GONE
+        binding.apply {
+            placeholderWashing.visibility = View.VISIBLE
+            textWashing.visibility = View.VISIBLE
+            imageWashPlaceHolder.visibility = View.GONE
+            fabCleanItems.visibility = View.GONE
+            textAllCleaned.visibility = View.GONE
+            imageAllCleaned.visibility = View.GONE
+        }
+
     }
 
 

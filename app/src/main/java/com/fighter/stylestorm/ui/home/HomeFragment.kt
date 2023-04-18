@@ -1,9 +1,7 @@
 package com.fighter.stylestorm.ui.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.annotation.SuppressLint
 import android.view.View
-import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.DataManager
@@ -47,45 +45,55 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun showNetworkPlaceHolder() {
         activity?.runOnUiThread {
-            binding.placeholderNetworkError.visibility = View.VISIBLE
-            binding.textError.visibility = View.VISIBLE
-            binding.weatherContainer.visibility = View.INVISIBLE
-            binding.textSuggestionTitle.visibility = View.INVISIBLE
-            binding.imageSuggestedItem.visibility = View.INVISIBLE
+            binding.apply {
+                placeholderNetworkError.visibility = View.VISIBLE
+                textError.visibility = View.VISIBLE
+                weatherContainer.visibility = View.INVISIBLE
+                textSuggestionTitle.visibility = View.INVISIBLE
+                imageSuggestedItem.visibility = View.INVISIBLE
+            }
+
         }
     }
 
     private fun hideNetworkPlaceHolder() {
         activity?.runOnUiThread {
-            binding.placeholderNetworkError.visibility = View.INVISIBLE
-            binding.textError.visibility = View.INVISIBLE
-            binding.weatherContainer.visibility = View.VISIBLE
-            binding.textSuggestionTitle.visibility = View.VISIBLE
-            binding.imageSuggestedItem.visibility = View.VISIBLE
+            binding.apply {
+                placeholderNetworkError.visibility = View.INVISIBLE
+                textError.visibility = View.INVISIBLE
+                weatherContainer.visibility = View.VISIBLE
+                textSuggestionTitle.visibility = View.VISIBLE
+                imageSuggestedItem.visibility = View.VISIBLE
+            }
+
         }
     }
 
     private fun showEmptyPlaceHolder() {
-        binding.placeholderEmpty.visibility = View.VISIBLE
-        binding.textEmpty.visibility = View.VISIBLE
-        binding.textSuggestionTitle.visibility = View.INVISIBLE
+        binding.apply {
+            placeholderEmpty.visibility = View.VISIBLE
+            textEmpty.visibility = View.VISIBLE
+            textSuggestionTitle.visibility = View.INVISIBLE
+        }
+
     }
 
-    private fun showLoading(){
+    private fun showLoading() {
         binding.apply {
             lottieLoading.visibility = View.VISIBLE
             weatherContainer.visibility = View.GONE
             imageSuggestedItem.visibility = View.GONE
-            textSuggestionTitle.visibility =View.GONE
+            textSuggestionTitle.visibility = View.GONE
         }
     }
-    private fun hideLoading(){
+
+    private fun hideLoading() {
         activity?.runOnUiThread {
             binding.apply {
                 lottieLoading.visibility = View.GONE
                 weatherContainer.visibility = View.VISIBLE
                 imageSuggestedItem.visibility = View.VISIBLE
-                textSuggestionTitle.visibility =View.VISIBLE
+                textSuggestionTitle.visibility = View.VISIBLE
             }
         }
     }
@@ -115,6 +123,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initWeather(weatherResponse: WeatherResponse) {
         activity?.runOnUiThread {
             binding.apply {

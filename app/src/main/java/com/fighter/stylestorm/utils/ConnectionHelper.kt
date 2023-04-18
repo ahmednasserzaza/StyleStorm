@@ -9,7 +9,8 @@ fun <T> OkHttpClient.executeWithCallbacks(
     request: Request,
     responseType: Type,
     onSuccessCallback: (response: T) -> Unit,
-    onFailureCallback: (error: Throwable) -> Unit): Call {
+    onFailureCallback: (error: Throwable) -> Unit
+): Call {
     val call = newCall(request)
     val callback = object : Callback {
         override fun onResponse(call: Call, response: Response) {

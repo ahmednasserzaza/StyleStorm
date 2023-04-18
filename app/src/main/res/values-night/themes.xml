@@ -27,11 +27,21 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+        <item name="android:statusBarColor">@color/md_theme_dark_surfaceVariant</item>
     </style>
 
     <style name="ImageShape">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10%</item>
         <item name="strokeWidth">0dp</item>
+    </style>
+    <style name="CircleImageShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/color_primary</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="WeatherCardStyle">
     </style>
 </resources>

@@ -1,6 +1,5 @@
 package com.fighter.stylestorm.data
 
-import android.util.Log
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.models.WeatherResponse
 import com.fighter.stylestorm.utils.Constants
@@ -122,27 +121,12 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
         sharedPref.clearImageList()
     }
 
-    override fun saveLocation(lat: Double, long: Double) {
-        sharedPref.latitude = lat.toFloat()
-        sharedPref.longitude = lat.toFloat()
-    }
-
     override fun saveLocationByCityName(location: String) {
         sharedPref.location = location
     }
 
     override fun getLocationByCityName(): String? {
         return sharedPref.location
-    }
-
-    override fun getLatitude(): Double {
-        Log.e("Location From dataManager", "lat = ${sharedPref.latitude.toDouble()}")
-        return sharedPref.latitude.toDouble()
-    }
-
-    override fun getLongitude(): Double {
-        Log.e("Location From dataManager", "lat = ${sharedPref.longitude.toDouble()}")
-        return sharedPref.longitude.toDouble()
     }
 
     override fun getWeatherData(

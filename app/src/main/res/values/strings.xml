@@ -21,4 +21,6 @@
     <string name="city_or_country_name">City or Country Name</string>
     <string name="current_location">Current Location</string>
     <string name="cairo">Cairo</string>
+    <string name="emptyValidation">Location can\'t be empty</string>
+    <string name="updatedLocation">Location Updated Successfully</string>
 </resources>

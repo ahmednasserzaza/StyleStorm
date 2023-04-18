@@ -2,7 +2,8 @@ package com.fighter.stylestorm.utils
 
 import androidx.recyclerview.widget.DiffUtil
 
-class LaundryDiffUtil(private val oldList:List<Int> ,private val newList:List<Int>):DiffUtil.Callback() {
+class LaundryDiffUtil(private val oldList: List<Int>, private val newList: List<Int>) :
+    DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 
     override fun getNewListSize(): Int = newList.size

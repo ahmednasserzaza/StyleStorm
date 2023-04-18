@@ -1,9 +1,11 @@
 package com.fighter.stylestorm.ui.settings
 
 import android.content.Context
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.DataManager
 import com.fighter.stylestorm.data.DataManagerInterface
 import com.fighter.stylestorm.databinding.FragmentSettingsBinding
@@ -40,9 +42,11 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             val inputMethodManager =
                 activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(binding.etCityName.windowToken, 0)
-
+            Toast.makeText(requireContext(), getString(R.string.updatedLocation), Toast.LENGTH_LONG)
+                .show()
         } else {
-            Toast.makeText(requireContext(), "Location can't be empty", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.emptyValidation), Toast.LENGTH_LONG)
+                .show()
         }
     }
 
