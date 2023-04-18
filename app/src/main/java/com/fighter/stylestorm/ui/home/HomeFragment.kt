@@ -45,34 +45,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun showNetworkPlaceHolder() {
         activity?.runOnUiThread {
-            binding.apply {
+            with(binding) {
                 placeholderNetworkError.visibility = View.VISIBLE
                 textError.visibility = View.VISIBLE
                 weatherContainer.visibility = View.INVISIBLE
-                statusContainer.visibility =View.INVISIBLE
+                statusContainer.visibility = View.INVISIBLE
                 textSuggestionTitle.visibility = View.INVISIBLE
                 imageSuggestedItem.visibility = View.INVISIBLE
             }
-
         }
     }
 
     private fun hideNetworkPlaceHolder() {
         activity?.runOnUiThread {
-            binding.apply {
+            with(binding) {
                 placeholderNetworkError.visibility = View.INVISIBLE
                 textError.visibility = View.INVISIBLE
                 weatherContainer.visibility = View.VISIBLE
-                statusContainer.visibility =View.VISIBLE
+                statusContainer.visibility = View.VISIBLE
                 textSuggestionTitle.visibility = View.VISIBLE
                 imageSuggestedItem.visibility = View.VISIBLE
             }
-
         }
     }
 
     private fun showEmptyPlaceHolder() {
-        binding.apply {
+        with(binding) {
             placeholderEmpty.visibility = View.VISIBLE
             textEmpty.visibility = View.VISIBLE
             textSuggestionTitle.visibility = View.INVISIBLE
@@ -81,10 +79,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun showLoading() {
-        binding.apply {
+        with(binding) {
             lottieLoading.visibility = View.VISIBLE
             weatherContainer.visibility = View.GONE
-            statusContainer.visibility =View.GONE
+            statusContainer.visibility = View.GONE
             imageSuggestedItem.visibility = View.GONE
             textSuggestionTitle.visibility = View.GONE
         }
@@ -92,10 +90,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun hideLoading() {
         activity?.runOnUiThread {
-            binding.apply {
+            with(binding) {
                 lottieLoading.visibility = View.GONE
                 weatherContainer.visibility = View.VISIBLE
-                statusContainer.visibility =View.VISIBLE
+                statusContainer.visibility = View.VISIBLE
                 imageSuggestedItem.visibility = View.VISIBLE
                 textSuggestionTitle.visibility = View.VISIBLE
             }
@@ -130,7 +128,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     @SuppressLint("SetTextI18n")
     private fun initWeather(weatherResponse: WeatherResponse) {
         activity?.runOnUiThread {
-            binding.apply {
+            with(binding) {
                 textWeatherDegree.text = "${weatherResponse.current?.tempC?.toInt()}° C"
                 textCityName.text = "${weatherResponse.location?.name} , "
                 textCountryName.text = weatherResponse.location?.country
