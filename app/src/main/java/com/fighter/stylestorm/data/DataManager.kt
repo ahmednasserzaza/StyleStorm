@@ -154,4 +154,12 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
             onFailureCallback
         )
     }
+
+    override fun setTheme(theme: Int) {
+        sharedPref.setTheme(theme)
+    }
+
+    override fun getTheme(): Int {
+        return sharedPref.getTheme()
+    }
 }

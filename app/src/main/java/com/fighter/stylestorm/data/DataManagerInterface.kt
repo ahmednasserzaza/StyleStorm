@@ -17,4 +17,6 @@ interface DataManagerInterface {
         onSuccessCallback: (response: WeatherResponse) -> Unit,
         onFailureCallback: (error: Throwable) -> Unit
     )
+    fun setTheme(theme:Int)
+    fun getTheme():Int
 }

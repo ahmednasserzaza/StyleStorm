@@ -1,10 +1,9 @@
 package com.fighter.stylestorm.ui.settings
 
 import android.content.Context
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.appcompat.app.AppCompatDelegate
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.DataManager
 import com.fighter.stylestorm.data.DataManagerInterface
@@ -17,14 +16,20 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     private val dataManager: DataManagerInterface by lazy { DataManager(sharedPreferences) }
 
     override val TAG: String = this::class.java.simpleName
-
     override fun getViewBinding(): FragmentSettingsBinding {
         return FragmentSettingsBinding.inflate(layoutInflater)
     }
 
     override fun setUp() {
+        setUpDefaultTheme()
+        onSwitchTheme()
         addCallBacks()
         setTextLocation()
+    }
+
+    private fun setUpDefaultTheme() {
+        val currentTheme = dataManager.getTheme()
+        binding.switchTheme.isChecked = currentTheme != AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
     }
 
     private fun addCallBacks() {
@@ -32,6 +37,18 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
             updateLocation()
         }
     }
+
+    private fun onSwitchTheme() {
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            val newTheme = if (isChecked) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+            AppCompatDelegate.setDefaultNightMode(newTheme)
+        }
+    }
+
 
     private fun updateLocation() {
         val location = binding.etCityName.text.toString()
