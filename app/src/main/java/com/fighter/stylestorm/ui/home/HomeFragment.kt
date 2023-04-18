@@ -1,6 +1,9 @@
 package com.fighter.stylestorm.ui.home
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.DataManager
@@ -20,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun setUp() {
+        showLoading()
         fetchWeatherData()
     }
 
@@ -29,6 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun onSuccess(weatherResponse: WeatherResponse) {
+        hideLoading()
         hideNetworkPlaceHolder()
         initWeather(weatherResponse)
         setRandomImageBasedOnClimate(getRandomImageBasedOnClimate(weatherResponse))
@@ -36,6 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun onFailure(error: Throwable) {
         log("Error:  ${error.message}")
+        hideLoading()
         showNetworkPlaceHolder()
     }
 
@@ -63,6 +69,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.placeholderEmpty.visibility = View.VISIBLE
         binding.textEmpty.visibility = View.VISIBLE
         binding.textSuggestionTitle.visibility = View.INVISIBLE
+    }
+
+    private fun showLoading(){
+        binding.apply {
+            lottieLoading.visibility = View.VISIBLE
+            weatherContainer.visibility = View.GONE
+            imageSuggestedItem.visibility = View.GONE
+            textSuggestionTitle.visibility =View.GONE
+        }
+    }
+    private fun hideLoading(){
+        activity?.runOnUiThread {
+            binding.apply {
+                lottieLoading.visibility = View.GONE
+                weatherContainer.visibility = View.VISIBLE
+                imageSuggestedItem.visibility = View.VISIBLE
+                textSuggestionTitle.visibility =View.VISIBLE
+            }
+        }
     }
 
     private fun setRandomImageBasedOnClimate(randomItem: Int?) {

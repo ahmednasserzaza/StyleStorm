@@ -9,11 +9,11 @@
     <string name="text_suggestion">We suggest to wear this item</string>
     <string name="emptySpace">%d\" \"</string>
     <string name="messageError">Something went wrong,try again please</string>
-    <string name="network_error">Network Error , Check your network</string>
+    <string name="network_error">Network Error Or City Not Found !</string>
     <string name="style_storm">Style Storm</string>
     <string name="text_empty">No clothes Found , Go to Laundry to clean your clothes</string>
     <string name="text_cleaned">Good Job , All clothes is cleaned</string>
-    <string name="washing_now">Washing now....</string>
+    <string name="washing_now">Cleaning Clothes now....</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="update_location">Update Location</string>

@@ -37,17 +37,18 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
     private fun showClothesCleaned() {
         binding.textAllCleaned.visibility = View.VISIBLE
         binding.imageAllCleaned.visibility = View.VISIBLE
-        binding.placeholderWashing.visibility = View.INVISIBLE
-        binding.textWashing.visibility = View.INVISIBLE
-        binding.fabCleanItems.visibility = View.INVISIBLE
+        binding.placeholderWashing.visibility = View.GONE
+        binding.textWashing.visibility = View.GONE
+        binding.fabCleanItems.visibility = View.GONE
     }
 
     private fun showWashingClothes() {
         binding.placeholderWashing.visibility = View.VISIBLE
         binding.textWashing.visibility = View.VISIBLE
-        binding.fabCleanItems.visibility = View.INVISIBLE
-        binding.textAllCleaned.visibility = View.INVISIBLE
-        binding.imageAllCleaned.visibility = View.INVISIBLE
+        binding.imageWashPlaceHolder.visibility = View.GONE
+        binding.fabCleanItems.visibility = View.GONE
+        binding.textAllCleaned.visibility = View.GONE
+        binding.imageAllCleaned.visibility = View.GONE
     }
 
 
