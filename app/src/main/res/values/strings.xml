@@ -6,7 +6,7 @@
     <string name="laundry">Laundry</string>
     <string name="settings">Settings</string>
     <string name="welcome_message">Style Storm</string>
-    <string name="text_suggestion">We suggest to wear this item based on current weather climate</string>
+    <string name="text_suggestion">We suggest to wear this item</string>
     <string name="emptySpace">%d\" \"</string>
     <string name="messageError">Something went wrong,try again please</string>
     <string name="network_error">Network Error , Check your network</string>
@@ -14,4 +14,11 @@
     <string name="text_empty">No clothes Found , Go to Laundry to clean your clothes</string>
     <string name="text_cleaned">Good Job , All clothes is cleaned</string>
     <string name="washing_now">Washing now....</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="update_location">Update Location</string>
+    <string name="theme">Theme</string>
+    <string name="city_or_country_name">City or Country Name</string>
+    <string name="current_location">Current Location</string>
+    <string name="cairo">Cairo</string>
 </resources>

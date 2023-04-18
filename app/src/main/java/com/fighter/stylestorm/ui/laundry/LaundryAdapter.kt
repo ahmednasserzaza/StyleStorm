@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil.DiffResult
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.fighter.stylestorm.R
 import com.fighter.stylestorm.databinding.ItemLaundryBinding
 import com.fighter.stylestorm.utils.LaundryDiffUtil
 
@@ -26,6 +27,7 @@ class LaundryAdapter(private var dirtyClothes:List<Int>):RecyclerView.Adapter<La
         val currentItem = dirtyClothes[position]
         Glide.with(holder.binding.root)
             .load(currentItem)
+            .placeholder(R.drawable.ic_image_place_holder)
             .into(holder.binding.imageLaundryItem)
     }
 

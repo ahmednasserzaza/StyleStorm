@@ -26,11 +26,10 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
 
     private fun addCallBacks() {
         binding.fabCleanItems.setOnClickListener {
-
             Handler().postDelayed({
                 // show lottie
                 showClothesCleaned()
-            }, 5000)
+            }, 3000)
             washClothes()
         }
     }
@@ -54,7 +53,8 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
 
     private fun washClothes() {
         dataManager.clearAllClothesFromPreferences()
-        adapter.setData(dataManager.getClothesStoredInSharedPref()!!)
+        val clothesAfterClear = dataManager.getClothesStoredInSharedPref()
+        adapter.setData(clothesAfterClear!!)
         showWashingClothes()
     }
 

@@ -1,7 +1,15 @@
 package com.fighter.stylestorm.data
 
+import android.util.Log
 import com.fighter.stylestorm.R
+import com.fighter.stylestorm.data.models.WeatherResponse
+import com.fighter.stylestorm.utils.Constants
 import com.fighter.stylestorm.utils.SharedPreferences
+import com.fighter.stylestorm.utils.executeWithCallbacks
+import com.google.gson.reflect.TypeToken
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 
 class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterface {
 
@@ -119,11 +127,47 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
         sharedPref.longitude = lat.toFloat()
     }
 
+    override fun saveLocationByCityName(location: String) {
+        sharedPref.location = location
+    }
+
+    override fun getLocationByCityName(): String? {
+        return sharedPref.location
+    }
+
     override fun getLatitude(): Double {
+        Log.e("Location From dataManager", "lat = ${sharedPref.latitude.toDouble()}")
         return sharedPref.latitude.toDouble()
     }
 
     override fun getLongitude(): Double {
+        Log.e("Location From dataManager", "lat = ${sharedPref.longitude.toDouble()}")
         return sharedPref.longitude.toDouble()
+    }
+
+    override fun getWeatherData(
+        location: String?,
+        onSuccessCallback: (response: WeatherResponse) -> Unit,
+        onFailureCallback: (error: Throwable) -> Unit
+    ) {
+        val logInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
+        val client =
+            OkHttpClient.Builder().addInterceptor(logInterceptor).build()
+
+
+        val request = Request.Builder()
+            .url(Constants.WEATHER_LINK + "&q=$location" + "&aqi=yes")
+            .build()
+
+        val responseType = object : TypeToken<WeatherResponse>() {}.type
+
+        client.executeWithCallbacks(
+            request,
+            responseType,
+            onSuccessCallback,
+            onFailureCallback
+        )
     }
 }

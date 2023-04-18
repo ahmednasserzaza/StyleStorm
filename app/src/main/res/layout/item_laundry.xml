@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="96dp"
-    android:layout_height="96dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/margin_small"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:strokeWidth="0dp">
 
     <com.google.android.material.imageview.ShapeableImageView
+        style="@style/CircleImageShape"
         android:id="@+id/image_laundry_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="@dimen/padding_tiny"
         tools:srcCompat="@drawable/ic_launcher_background"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/CircleImageShape"

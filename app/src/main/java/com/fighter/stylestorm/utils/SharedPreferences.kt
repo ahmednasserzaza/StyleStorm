@@ -11,14 +11,14 @@ class SharedPreferences(context: Context) {
         val imageSet = sharedPreferences.getStringSet(
             IMAGE_LIST,
             null
-        ) // use null as default value for nullable type
-        return imageSet?.map { it.toInt() } // use safe-call operator to handle null list
+        )
+        return imageSet?.map { it.toInt() }
     }
 
-    fun setImageList(imageList: List<Int?>) { // use nullable type for parameter
+    fun setImageList(imageList: List<Int?>) {
         val editor = sharedPreferences.edit()
         val imageSet =
-            imageList.map { it.toString() }.toSet() // use safe-call operator to handle null list
+            imageList.map { it.toString() }.toSet()
         editor.putStringSet(IMAGE_LIST, imageSet)
         editor.apply()
     }
@@ -30,16 +30,25 @@ class SharedPreferences(context: Context) {
     }
 
     var latitude: Float
-        get() = sharedPreferences.getFloat("latitude", 0f)
-        set(value) = sharedPreferences.edit().putFloat("latitude", value).apply()
+        get() = sharedPreferences.getFloat(LATITUDE, LATITUDE_DEFAULT_VALUE)
+        set(value) = sharedPreferences.edit().putFloat(LATITUDE, value).apply()
 
     var longitude: Float
-        get() = sharedPreferences.getFloat("longitude", 0f)
-        set(value) = sharedPreferences.edit().putFloat("longitude", value).apply()
+        get() = sharedPreferences.getFloat(LONGITUDE, LONGITUDE_DEFAULT_VALUE)
+        set(value) = sharedPreferences.edit().putFloat(LONGITUDE, value).apply()
+
+    var location: String?
+        get() = sharedPreferences.getString(LOCATION, "Cairo")
+        set(value) = sharedPreferences.edit().putString(LOCATION, value).apply()
 
     companion object {
         private const val SHARED_PREFERENCES_NAME = "ImageSharedPreferences"
         private const val IMAGE_LIST = "ImageList"
+        private const val LATITUDE = "latitude"
+        private const val LONGITUDE = "longitude"
+        private const val LOCATION = "location"
+        private const val LATITUDE_DEFAULT_VALUE = 30.044420f
+        private const val LONGITUDE_DEFAULT_VALUE = 31.235712f
     }
 
 }

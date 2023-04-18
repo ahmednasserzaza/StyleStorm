@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_dark_tertiaryContainer"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.settings.SettingsFragment">
 
-</FrameLayout>
+
+    <EditText
+        android:id="@+id/et_city_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_shape"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginVertical="@dimen/margin_small"
+        android:hint="@string/city_or_country_name"
+        android:padding="@dimen/padding_medium"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_update_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        android:paddingVertical="@dimen/padding_medium"
+        android:text="@string/update_location"
+        app:cornerRadius="@dimen/radius_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_city_name" />
+
+    <TextView
+        android:id="@+id/text_current_location_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_location"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_giant"
+        android:drawablePadding="@dimen/padding_tiny"
+        app:drawableStartCompat="@drawable/ic_location"
+        app:layout_constraintTop_toBottomOf="@+id/button_update_location"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/text_current_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cairo"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/text_current_location_description"
+        app:layout_constraintTop_toTopOf="@+id/text_current_location_description"
+        />
+
+    <TextView
+        android:id="@+id/text_switch_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/theme"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:drawableStartCompat="@drawable/ic_theme"
+        android:drawablePadding="@dimen/padding_tiny"
+        android:layout_marginStart="@dimen/margin_medium"
+        app:layout_constraintTop_toBottomOf="@+id/text_current_location_description"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="@dimen/padding_tiny"
+            android:layout_marginEnd="@dimen/margin_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/text_switch_theme"
+            app:layout_constraintTop_toTopOf="@+id/text_switch_theme"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
