@@ -131,8 +131,8 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
 
     override fun getWeatherData(
         location: String?,
-        onSuccessCallback: (response: WeatherResponse) -> Unit,
-        onFailureCallback: (error: Throwable) -> Unit
+        onSuccess: (response: WeatherResponse) -> Unit,
+        onFailure: (error: Throwable) -> Unit
     ) {
         val logInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
@@ -150,8 +150,8 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
         client.executeWithCallbacks(
             request,
             responseType,
-            onSuccessCallback,
-            onFailureCallback
+            onSuccess,
+            onFailure
         )
     }
 

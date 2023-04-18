@@ -8,8 +8,8 @@ import java.lang.reflect.Type
 fun <T> OkHttpClient.executeWithCallbacks(
     request: Request,
     responseType: Type,
-    onSuccessCallback: (response: T) -> Unit,
-    onFailureCallback: (error: Throwable) -> Unit
+    onSuccess: (response: T) -> Unit,
+    onFailure: (error: Throwable) -> Unit
 ): Call {
     val call = newCall(request)
     val callback = object : Callback {
@@ -18,14 +18,14 @@ fun <T> OkHttpClient.executeWithCallbacks(
                 val responseBody = response.body?.string()
                 val gson = Gson()
                 val result = gson.fromJson<T>(responseBody, responseType)
-                onSuccessCallback(result)
+                onSuccess(result)
             } else {
-                onFailureCallback(Throwable("$response"))
+                onFailure(Throwable("$response"))
             }
         }
 
         override fun onFailure(call: Call, e: IOException) {
-            onFailureCallback(e)
+            onFailure(e)
         }
     }
     call.enqueue(callback)

@@ -14,8 +14,8 @@ interface DataManagerInterface {
     fun getLocationByCityName(): String?
     fun getWeatherData(
         location: String?,
-        onSuccessCallback: (response: WeatherResponse) -> Unit,
-        onFailureCallback: (error: Throwable) -> Unit
+        onSuccess: (response: WeatherResponse) -> Unit,
+        onFailure: (error: Throwable) -> Unit
     )
     fun setTheme(theme:Int)
     fun getTheme():Int
