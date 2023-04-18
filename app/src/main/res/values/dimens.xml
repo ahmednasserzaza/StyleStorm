@@ -47,5 +47,6 @@
     <dimen name="elevation_giant">16dp</dimen>
 
     <dimen name="spacing_tiny_negative">-4dp</dimen>
+    <dimen name="text_big">32sp</dimen>
 
 </resources>
