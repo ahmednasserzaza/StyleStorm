@@ -34,7 +34,7 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
     }
 
     private fun showClothesCleaned() {
-        binding.apply {
+        with(binding) {
             textAllCleaned.visibility = View.VISIBLE
             imageAllCleaned.visibility = View.VISIBLE
             placeholderWashing.visibility = View.GONE
@@ -45,7 +45,7 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
     }
 
     private fun showWashingClothes() {
-        binding.apply {
+        with(binding) {
             placeholderWashing.visibility = View.VISIBLE
             textWashing.visibility = View.VISIBLE
             imageWashPlaceHolder.visibility = View.GONE
@@ -55,7 +55,6 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
         }
 
     }
-
 
     private fun washClothes() {
         dataManager.clearAllClothesFromPreferences()
