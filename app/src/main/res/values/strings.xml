@@ -23,4 +23,6 @@
     <string name="cairo">Cairo</string>
     <string name="emptyValidation">Location can\'t be empty</string>
     <string name="updatedLocation">Location Updated Successfully</string>
+    <string name="laundry_description">Laundry is the place where you clean your clothes</string>
+    <string name="dirty_clothes">Dirty Clothes</string>
 </resources>

@@ -46,6 +46,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
                 AppCompatDelegate.MODE_NIGHT_NO
             }
             AppCompatDelegate.setDefaultNightMode(newTheme)
+            dataManager.setTheme(newTheme)
         }
     }
 

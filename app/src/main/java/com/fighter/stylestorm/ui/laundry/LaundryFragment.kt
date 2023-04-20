@@ -40,6 +40,8 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
             placeholderWashing.visibility = View.GONE
             textWashing.visibility = View.GONE
             fabCleanItems.visibility = View.GONE
+            textLaundryDescription.visibility = View.GONE
+            textDirtyClothes.visibility = View.GONE
         }
 
     }
@@ -52,6 +54,8 @@ class LaundryFragment : BaseFragment<FragmentLaundryBinding>() {
             fabCleanItems.visibility = View.GONE
             textAllCleaned.visibility = View.GONE
             imageAllCleaned.visibility = View.GONE
+            textLaundryDescription.visibility = View.GONE
+            textDirtyClothes.visibility = View.GONE
         }
 
     }
