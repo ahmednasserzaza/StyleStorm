@@ -1,5 +1,5 @@
 # Style Storm - Android App
-### Style Storm is an Android app built in Kotlin that provides suggestions for suitable clothes to wear based on the weather conditions. The app is designed to help users dress appropriately for the weather, ensuring that they are comfortable and safe.
+<p>Style Storm is an Android app built in Kotlin that provides suggestions for suitable clothes to wear based on the weather conditions. The app is designed to help users dress appropriately for the weather, ensuring that they are comfortable and safe.</p>
 
 ## Features
 * Suggestions for suitable clothes based on the weather conditions
@@ -26,7 +26,8 @@
 | ![](https://user-images.githubusercontent.com/30028905/233750614-7ea19857-4244-437c-b3a1-cbb64a3c494f.png) | ![](https://user-images.githubusercontent.com/30028905/233750658-4a073b21-9cf0-46de-afa6-a4065c2361d2.png) | ![](https://user-images.githubusercontent.com/30028905/233750682-569cbc4c-61a7-4987-8d5d-645821036dc7.png) |
 
 ## Usage
-### To use Style Storm just get your api key from [Weather Api](https://www.weatherapi.com/) and put your key in secret.properties file that you should create.
+<p>To use Style Storm just get your api key from Weather Api (https://www.weatherapi.com/) and put your key in secret.properties file that you should create.</p>
+
 ## Contributing
-### If you would like to contribute to the development of Style Storm, please fork the repository and submit a pull request. We welcome contributions from all developers, regardless of their level of experience.
+<p>If you would like to contribute to the development of Style Storm, please fork the repository and submit a pull request. We welcome contributions from all developers, regardless of their level of experience.</p>
 
