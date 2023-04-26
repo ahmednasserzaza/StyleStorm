@@ -27,7 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun fetchWeatherData() {
         val location = dataManager.getLocationByCityName()
-        dataManager.getWeatherData(location, ::onSuccess, ::onFailure)
+        dataManager.getWeatherByCityName(location, ::onSuccess, ::onFailure)
     }
 
     private fun onSuccess(weatherResponse: WeatherResponse) {

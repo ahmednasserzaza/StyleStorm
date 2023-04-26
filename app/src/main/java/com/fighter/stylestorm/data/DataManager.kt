@@ -1,11 +1,13 @@
 package com.fighter.stylestorm.data
 
+import com.fighter.stylestorm.BuildConfig
 import com.fighter.stylestorm.R
 import com.fighter.stylestorm.data.models.WeatherResponse
 import com.fighter.stylestorm.utils.Constants
 import com.fighter.stylestorm.utils.SharedPreferences
 import com.fighter.stylestorm.utils.executeWithCallbacks
 import com.google.gson.reflect.TypeToken
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -45,6 +47,14 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
         R.drawable.collection35,
         R.drawable.collection36,
     )
+
+    private val logInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BASIC
+    }
+
+    private val client = OkHttpClient.Builder().apply {
+        addInterceptor(logInterceptor)
+    }.build()
 
     override fun getRandomWinterClothes(): Int? {
         val winterClothes = winterClothes.toList()
@@ -129,20 +139,45 @@ class DataManager(private val sharedPref: SharedPreferences) : DataManagerInterf
         return sharedPref.location
     }
 
-    override fun getWeatherData(
+    override fun getWeatherByCityName(
         location: String?,
         onSuccess: (response: WeatherResponse) -> Unit,
         onFailure: (error: Throwable) -> Unit
     ) {
-        val logInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
-        }
-        val client =
-            OkHttpClient.Builder().addInterceptor(logInterceptor).build()
-
+        val formBody = FormBody.Builder()
+            .add("key" , BuildConfig.API_KEY)
+            .add("q" , "$location")
+            .build()
 
         val request = Request.Builder()
-            .url(Constants.WEATHER_LINK + "&q=$location" + "&aqi=yes")
+            .url(Constants.URL)
+            .post(formBody)
+            .build()
+
+        val responseType = object : TypeToken<WeatherResponse>() {}.type
+
+        client.executeWithCallbacks(
+            request,
+            responseType,
+            onSuccess,
+            onFailure
+        )
+    }
+
+    override fun getWeatherByLatAndLong(
+        latitude: Double,
+        longitude: Double,
+        onSuccess: (response: WeatherResponse) -> Unit,
+        onFailure: (error: Throwable) -> Unit
+    ) {
+        val formBody = FormBody.Builder()
+            .add("key", BuildConfig.API_KEY)
+            .add("q", "$latitude,$longitude")
+            .build()
+
+        val request = Request.Builder()
+            .url(Constants.URL)
+            .post(formBody)
             .build()
 
         val responseType = object : TypeToken<WeatherResponse>() {}.type

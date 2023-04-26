@@ -12,8 +12,14 @@ interface DataManagerInterface {
     fun clearAllClothesFromPreferences()
     fun saveLocationByCityName(location: String)
     fun getLocationByCityName(): String?
-    fun getWeatherData(
+    fun getWeatherByCityName(
         location: String?,
+        onSuccess: (response: WeatherResponse) -> Unit,
+        onFailure: (error: Throwable) -> Unit
+    )
+    fun getWeatherByLatAndLong(
+        latitude:Double,
+        longitude:Double,
         onSuccess: (response: WeatherResponse) -> Unit,
         onFailure: (error: Throwable) -> Unit
     )
