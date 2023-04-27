@@ -1,4 +1,4 @@
-# Style Storm - Android App
+# Style Storm
 <p>Style Storm is an Android app built in Kotlin that provides suggestions for suitable clothes to wear based on the weather conditions. The app is designed to help users dress appropriately for the weather, ensuring that they are comfortable and safe.</p>
 
 ## Features
